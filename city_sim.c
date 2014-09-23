@@ -1,10 +1,7 @@
 #include <stdio.h>
+#include "city.h"
 
-struct item
-{
-};
-
-item map[9][9];
+city g_city;
 
 int main()
 {
