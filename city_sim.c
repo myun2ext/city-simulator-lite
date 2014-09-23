@@ -6,7 +6,7 @@ city g_city;
 
 int main()
 {
-	const int size = 3000;
+	const int size = 8;
 	int i = 0;
 
 	init_city(&g_city, "Example City.", "myun2", 100000, size, size);

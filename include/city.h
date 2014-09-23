@@ -37,4 +37,12 @@ inline unsigned int revenue(city *c) {
 	return c->population * 3;
 }
 
+inline unsigned int build_road(city *c, unsigned int x, unsigned int y)
+{
+	unsigned int cost = eviction_cost(&c->blocks[x + y*x]);
+	if ( c->budget < cost )
+		return 0;
+	return c->budget -= road(&c->blocks[x + y*x]);
+}
+
 #endif//__github_com_myun2__city_simulator__city__H__

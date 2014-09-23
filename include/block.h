@@ -8,12 +8,12 @@ typedef unsigned int u_int;
 enum area_type_e
 {
 	none,
-	residence,
-	commercial,
-	industrial,
-	road=70,
-	rail,
-	administrative = 99
+	residence_area,
+	commercial_area,
+	industrial_area,
+	blk_road=70,
+	blk_rail,
+	blk_administrative = 99
 };
 
 typedef struct
@@ -48,12 +48,32 @@ unsigned int inhabit(block *b, unsigned int peoples)
 	return b->population;
 }
 
+inline unsigned int eviction_cost(block *b)
+{
+	return b->population * 3;
+}
+
 inline unsigned int eviction(block *b)
 {
-	unsigned int cost = b->population * 3;
+	unsigned int cost = eviction_cost(b);
 	b->population = 0;
 	return cost;
 }
 
+inline unsigned int road(block *b)
+{
+	unsigned int cost = 20;
+	cost += eviction(b);
+	b->area_type = blk_road;
+	return cost;
+}
+
+inline unsigned int rail(block *b)
+{
+	unsigned int cost = 40;
+	cost += eviction(b);
+	b->area_type = blk_rail;
+	return cost;
+}
 
 #endif//__github_com_myun2__city_simulator__block__H__

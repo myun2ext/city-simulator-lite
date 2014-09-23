@@ -1,11 +1,6 @@
 #ifndef __github_com_myun2__city_simulator__development__H__
 #define __github_com_myun2__city_simulator__development__H__
 
-inline unsigned int road()
-{
-	return 20;
-}
-
 inline unsigned int rail()
 {
 	return 40;
