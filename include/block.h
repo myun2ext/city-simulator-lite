@@ -7,13 +7,19 @@
 typedef unsigned int u_int;
 enum area_type_e
 {
-	none,
-	residence_area,
-	commercial_area,
-	industrial_area,
+	wild_blk,
+	blk_residencial,
+	blk_commercial,
+	blk_industrial,
 	blk_road=70,
 	blk_rail,
 	blk_administrative = 99
+};
+
+enum build_type_e
+{
+	bld_road,
+	bld_rail
 };
 
 typedef struct
@@ -42,6 +48,8 @@ unsigned int inhabit(block *b, unsigned int peoples)
 
 	//if ( b->population + peoples > max )
 	//	return 0;
+	if ( b->area_type != wild_blk && b->area_type != blk_residencial )
+		return 0;
 
 	b->population += peoples;
 	b->value += peoples;

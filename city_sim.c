@@ -12,6 +12,7 @@ int main()
 
 	init_city(&g_city, "Example City.", "myun2", 100000, size, size);
 	printf("Initialized city. %s\n", g_city.name);
+	build(blk_road, &g_city, 3, 3);
 
 	for(i=0; i<1000; i++)
 	{

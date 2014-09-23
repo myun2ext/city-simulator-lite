@@ -39,7 +39,7 @@ inline unsigned int revenue(city *c) {
 	return c->population * 3;
 }
 
-inline unsigned int build_road(city *c, unsigned int x, unsigned int y)
+inline unsigned int build(enum area_type_e type, city *c, unsigned int x, unsigned int y)
 {
 	unsigned int cost = eviction_cost(&c->blocks[x + y*x]);
 	if ( c->budget < cost )
