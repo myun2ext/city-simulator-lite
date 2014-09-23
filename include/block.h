@@ -10,15 +10,20 @@ enum area_type_e
 	residence,
 	commercial,
 	industrial,
-	administrative	
+	road=70,
+	rail,
+	administrative = 99
 };
 
 typedef struct
 {
 	enum area_type_e area_type;
-	unsigned int value;
+	unsigned int detail_type1;
+	unsigned int detail_type2;
+	unsigned int detail_type3;
 	unsigned int population;
 	unsigned int stage;
+	unsigned int value;
 } block, block_t, block_type;
 
 inline void init_block(block* b)
