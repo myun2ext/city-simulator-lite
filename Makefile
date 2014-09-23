@@ -1,3 +1,3 @@
 all:
-	g++ city_sim.c -I ./include
+	gcc city_sim.c -I ./include
 	./a
