@@ -51,6 +51,7 @@ unsigned int inhabit(block *b, unsigned int peoples)
 	if ( b->area_type != wild_blk && b->area_type != blk_residencial )
 		return 0;
 
+	b->area_type = blk_residencial;
 	b->population += peoples;
 	b->value += peoples;
 	return b->population;
