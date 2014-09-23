@@ -8,7 +8,7 @@ int main()
 	const int size = 3000;
 	int i = 0;
 
-	init_city(&g_city, "Example City.", size, size);
+	init_city(&g_city, "Example City.", "myun2", 100000, size, size);
 	printf("Initialized city. %s\n", g_city.name);
 
 	for(i=0; i<1000; i++)
