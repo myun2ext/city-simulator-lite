@@ -2,6 +2,7 @@
 #define __github_com_myun2__city_simulator__block__H__
 
 #include <math.h>
+#include <memory.h>
 
 typedef unsigned int u_int;
 enum area_type_e
@@ -46,5 +47,13 @@ unsigned int inhabit(block *b, unsigned int peoples)
 	b->value += peoples;
 	return b->population;
 }
+
+inline unsigned int eviction(block *b)
+{
+	unsigned int cost = b->population * 3;
+	b->population = 0;
+	return cost;
+}
+
 
 #endif//__github_com_myun2__city_simulator__block__H__
