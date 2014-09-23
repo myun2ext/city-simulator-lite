@@ -6,7 +6,7 @@
 
 void vary_population(city* s)
 {
-	int ups = rand() % 3;
+	int ups = rand() % 3 + s->population * 0.03 / 12;
 	int block_n = rand() % (s->width * s->height);
 	
 	s->population += ups;
@@ -16,6 +16,7 @@ void vary_population(city* s)
 void city_simulation_step(city* s)
 {
 	vary_population(s);
+	s->budget += revenue(s);
 }
 
 #endif//__github_com_myun2__city_simulator__sim__H__

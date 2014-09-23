@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <locale.h>
 #include "sim.h"
 
 city g_city;
@@ -15,7 +16,9 @@ int main()
 	{
 		city_simulation_step(&g_city);
 	}
+	setlocale(LC_ALL, "");
 	printf("City population: %d\n", g_city.population);
+	printf("City budget: %d\n",     g_city.budget);
 
 	return 0;
 }

@@ -33,4 +33,8 @@ inline void init_city(city *c, const char* name, const char* mayor, unsigned int
 		init_block(&c->blocks[i]);
 }
 
+inline unsigned int revenue(city *c) {
+	return c->population * 3;
+}
+
 #endif//__github_com_myun2__city_simulator__city__H__
