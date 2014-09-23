@@ -2,6 +2,7 @@
 #define __github_com_myun2__city_simulator__city__H__
 
 #include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
 #include "block.h"
 
@@ -12,6 +13,7 @@ typedef struct
 	block_t *blocks;
 	char name[128];
 	char mayor_name[64];
+	unsigned int month;
 	unsigned int budget;
 
 	unsigned int population;
@@ -43,6 +45,12 @@ inline unsigned int build_road(city *c, unsigned int x, unsigned int y)
 	if ( c->budget < cost )
 		return 0;
 	return c->budget -= road(&c->blocks[x + y*x]);
+}
+
+void city_date(city* c, char* s)
+{
+	unsigned int month = c->month;
+	sprintf(s, "%04d/%d", 1900 + month / 12, month % 12 + 1);
 }
 
 #endif//__github_com_myun2__city_simulator__city__H__

@@ -17,6 +17,7 @@ void city_simulation_step(city* s)
 {
 	vary_population(s);
 	s->budget += revenue(s);
+	s->month += 1;
 }
 
 #endif//__github_com_myun2__city_simulator__sim__H__
