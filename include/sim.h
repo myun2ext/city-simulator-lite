@@ -16,6 +16,28 @@ unsigned int employment(city* s, unsigned int peoples)
 	return b->population += peoples;
 }
 
+block* nearly_road_resident(city* s)
+{
+	index_item i = random_select_road(&s->index);
+	int x = i.x;
+	int y = i.y;
+	unsigned int n = sim_rand() % 4;
+	switch(n)
+	{
+	case 0:
+		x--; break;
+	case 1:
+		x++; break;
+	case 2:
+		y--; break;
+	case 3:
+		y++; break;
+	}
+	if ( x < 0 || y < 0 )
+		return nearly_road_resident(s);
+	return &s->blocks[x + y*x];
+}
+
 void sim_resident(city* s)
 {
 	int ups = rand() % 3 + s->population * 0.03 / 12;
