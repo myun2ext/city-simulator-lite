@@ -16,7 +16,7 @@ unsigned int employment(city* s, unsigned int peoples)
 	return b->population += peoples;
 }
 
-void vary_population(city* s)
+void sim_resident(city* s)
 {
 	int ups = rand() % 3 + s->population * 0.03 / 12;
 	int block_n = rand() % (s->width * s->height);
@@ -28,7 +28,7 @@ void vary_population(city* s)
 
 void city_simulation_step(city* s)
 {
-	vary_population(s);
+	sim_resident(s);
 	s->budget += revenue(s);
 	s->month += 1;
 }

@@ -37,16 +37,6 @@ inline unsigned int revenue(city *c) {
 	return c->population * 3;
 }
 
-inline unsigned int build_road(city *c, unsigned int x, unsigned int y, unsigned int stage)
-{
-	unsigned int cost = eviction_cost(&c->blocks[x + y*x]);
-	if ( c->budget < cost )
-		return 0;
-
-	append_road_index(&c->index, x, y);
-	return c->budget -= road(&c->blocks[x + y*x], stage);
-}
-
 void city_date(city* c, char* s)
 {
 	unsigned int month = c->month;
