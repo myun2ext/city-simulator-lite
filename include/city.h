@@ -27,14 +27,10 @@ inline void init_city(city *c, const char* name, const char* mayor, unsigned int
 
 	c->width = width;
 	c->height = height;
-	c->blocks = (block_type*)calloc(sizeof(block_t), width * height);
+	c->blocks = (block_type*)calloc(width * height, sizeof(block_t));
 	strcpy(c->name, name);
 	strcpy(c->mayor_name, mayor);
 	c->budget = budget;
-
-	//	Init blocks
-	for(i=0; i<width * height; i++)
-		init_block(&c->blocks[i]);
 
 	init_index(&c->index, 16);
 }
@@ -48,7 +44,7 @@ inline unsigned int build(enum area_type_e type, city *c, unsigned int x, unsign
 	unsigned int cost = eviction_cost(&c->blocks[x + y*x]);
 	if ( c->budget < cost )
 		return 0;
-	return c->budget -= road(&c->blocks[x + y*x]);
+	return c->budget -= road(&c->blocks[x + y*x], 0);
 }
 
 void city_date(city* c, char* s)

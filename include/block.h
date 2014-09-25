@@ -31,6 +31,8 @@ typedef struct
 	unsigned int population;
 	unsigned int stage;
 	unsigned int value;
+	unsigned int age;
+	char name[64];
 } block, block_t, block_type;
 
 inline void init_block(block* b)
@@ -69,17 +71,17 @@ inline unsigned int eviction(block *b)
 	return cost;
 }
 
-inline unsigned int road(block *b)
+inline unsigned int road(block *b, unsigned int stage)
 {
-	unsigned int cost = 20;
+	unsigned int cost = 20 * (stage + 1);
 	cost += eviction(b);
 	b->area_type = blk_road;
 	return cost;
 }
 
-inline unsigned int rail(block *b)
+inline unsigned int rail(block *b, unsigned int stage)
 {
-	unsigned int cost = 40;
+	unsigned int cost = 40 * (stage + 1);
 	cost += eviction(b);
 	b->area_type = blk_rail;
 	return cost;
