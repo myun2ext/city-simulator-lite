@@ -9,7 +9,7 @@ typedef struct
 {
 	unsigned int x;
 	unsigned int y;
-} index_item_t;
+} index_item_t, index_item;
 
 typedef struct
 {
@@ -40,9 +40,16 @@ inline void init_index(index *i, unsigned int initial_size)
 	memset(i->administratives, 0xffffffff, alloc_size);
 }
 
-inline void append_road_index(unsigned int x, unsigned int y)
+inline void append_road_index(index *i, unsigned int x, unsigned int y)
 {
+	index_item *p = i->roads;
 
+	for(; p->x != 0xffffffff; p++)
+	{
+		if ( p->x == x && p->y == y )
+			return;
+	}
+	p->x = x; p->y = y;
 }
 
 #endif//__github_com_myun2__city_simulator__index__H__

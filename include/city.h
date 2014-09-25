@@ -15,16 +15,14 @@ typedef struct
 	char name[128];
 	char mayor_name[64];
 	unsigned int month;
-	unsigned int budget;
-	unsigned int population;
+	long long budget;
+	long long population;
 
 	index_t index;
 } city;
 
 inline void init_city(city *c, const char* name, const char* mayor, unsigned int budget, unsigned int width, unsigned int height)
 {
-	unsigned int i;
-
 	c->width = width;
 	c->height = height;
 	c->blocks = (block_type*)calloc(width * height, sizeof(block_t));
@@ -39,12 +37,14 @@ inline unsigned int revenue(city *c) {
 	return c->population * 3;
 }
 
-inline unsigned int build(enum area_type_e type, city *c, unsigned int x, unsigned int y)
+inline unsigned int build_road(city *c, unsigned int x, unsigned int y, unsigned int stage)
 {
 	unsigned int cost = eviction_cost(&c->blocks[x + y*x]);
 	if ( c->budget < cost )
 		return 0;
-	return c->budget -= road(&c->blocks[x + y*x], 0);
+
+	append_road_index(&c->index, x, y);
+	return c->budget -= road(&c->blocks[x + y*x], stage);
 }
 
 void city_date(city* c, char* s)
