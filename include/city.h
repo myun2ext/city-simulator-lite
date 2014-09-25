@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "block.h"
+#include "index.h"
 
 typedef struct
 {
@@ -15,8 +16,9 @@ typedef struct
 	char mayor_name[64];
 	unsigned int month;
 	unsigned int budget;
-
 	unsigned int population;
+
+	index_t index;
 } city;
 
 inline void init_city(city *c, const char* name, const char* mayor, unsigned int budget, unsigned int width, unsigned int height)
@@ -33,6 +35,8 @@ inline void init_city(city *c, const char* name, const char* mayor, unsigned int
 	//	Init blocks
 	for(i=0; i<width * height; i++)
 		init_block(&c->blocks[i]);
+
+	init_index(&c->index, 16);
 }
 
 inline unsigned int revenue(city *c) {
