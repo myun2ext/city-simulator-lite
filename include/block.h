@@ -76,6 +76,7 @@ inline unsigned int road(block *b, unsigned int stage)
 	unsigned int cost = 20 * (stage + 1);
 	cost += eviction(b);
 	b->area_type = blk_road;
+	b->value = 1;
 	return cost;
 }
 
@@ -84,6 +85,7 @@ inline unsigned int rail(block *b, unsigned int stage)
 	unsigned int cost = 40 * (stage + 1);
 	cost += eviction(b);
 	b->area_type = blk_rail;
+	b->value = 7;
 	return cost;
 }
 
